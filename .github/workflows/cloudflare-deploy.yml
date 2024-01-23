@@ -19,10 +19,10 @@ jobs:
       - name: Check
         run: cat .env.local
       - name: Build
-        run: yarn run pages:deploy
-#      - name: Build & Deploy Worker
-#        uses: cloudflare/wrangler-action@v3
-#        with:
-#          apiToken: ${{ secrets.CF_API_TOKEN }}
-#          accountId: ${{ secrets.CF_ACCOUNT_ID }}
-#          command: pages deploy --project-name=flotiq-starter-on-pages .vercel/output/static
+        run: yarn run pages:build
+      - name: Build & Deploy Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          command: pages deploy --project-name=flotiq-starter-on-pages .vercel/output/static
