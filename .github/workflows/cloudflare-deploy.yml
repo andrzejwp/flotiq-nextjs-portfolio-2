@@ -10,9 +10,11 @@ jobs:
 #    needs: test
     steps:
       - uses: actions/checkout@v2
-      - name: Build & Deploy Worker
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}
-          accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: pages deploy --project-name=flotiq-starter-on-pages .vercel/output/static
+      - name: Build
+        run: yarn run pages:deploy
+#      - name: Build & Deploy Worker
+#        uses: cloudflare/wrangler-action@v3
+#        with:
+#          apiToken: ${{ secrets.CF_API_TOKEN }}
+#          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+#          command: pages deploy --project-name=flotiq-starter-on-pages .vercel/output/static
