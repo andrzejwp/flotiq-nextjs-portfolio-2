@@ -12,7 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Prepare vars
-        run: echo "FLOTIQ_API_URL=${{ vars.FLOTIQ_API_URL }}\nFLOTIQ_API_KEY=${{ vars.FLOTIQ_API_KEY }}\nNEXT_PUBLIC_GA_ID=123" >>.env.local 
+        run: |
+          echo "FLOTIQ_API_URL=${{ vars.FLOTIQ_API_URL }}" >> .env.local
+          echo "FLOTIQ_API_KEY=${{ vars.FLOTIQ_API_KEY }}" >> .env.local
+          echo "NEXT_PUBLIC_GA_ID=123" >>.env.local 
       - name: Check
         run: cat .env.local
       - name: Build
