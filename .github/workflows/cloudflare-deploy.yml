@@ -6,6 +6,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: prod
     timeout-minutes: 60
 #    needs: test
     steps:
